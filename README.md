@@ -128,7 +128,7 @@ Example Playbook
 ---
 - name: Installs Gerrit Code Review
   hosts: gerrit-servers
-  sudo: true
+  become: true
   vars:
     - gerrit_db_info:
 #        - host: localhost

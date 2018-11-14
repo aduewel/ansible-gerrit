@@ -31,21 +31,36 @@
 [gitweb]
 	type = gitweb
 	cgi = {{ gitweb_cgi_path }}
+{% if gerrit_auth_type == 'LDAP' %}
+[ldap]
+{%   for item in gerrit_ldap_info %}
+	server = {{ item.server }}
+	accountBase = {{ item.accountbase }}
+	accountScope = {{ item.accountscope }}
+	accountPattern = {{ item.accountpattern }}
+	accountFullName = {{ item.accountfullname }}
+	accountEmailAddress = {{ item.accountemailaddress }}
+	groupBase = {{ item.groupbase }}
+	groupPattern = {{ item.grouppattern }}
+	groupMemberPattern = {{ item.groupmemberpattern }}
+	groupScope = {{ item.groupscope }}
+{% endfor %}
+{% endif %}
 {% if gerrit_auth_type == "LDAP_BIND" %}
 [ldap]
 {%   for item in gerrit_ldap_info %}
 	server = {{ item.server }}
 	accountBase = {{ item.accountbase }}
-	accountPattern = {{ item.accountpattern }}
 	accountScope = {{ item.accountscope }}
+	accountPattern = {{ item.accountpattern }}
 	groupBase = {{ item.groupbase }}
 	accountFullName = {{ item.accountfullname }}
 	accountMemberField = {{ item.accountmemberfield }}
 	accountEmailAddress = {{ item.accountemailaddress }}
 	accountSshUserName = {{ item.accountsshusername }}
 	referral = {{ item.referral }}
-	{%   endfor %}
-	{% endif %}
+{% endfor %}
+{% endif %}
 [plugins]
 {% if gerrit_allow_remote_admin is defined and gerrit_allow_remote_admin %}
     allowRemoteAdmin = true
