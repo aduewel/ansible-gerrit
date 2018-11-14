@@ -63,6 +63,7 @@ gerrit_init: "java -jar {{ gerrit_install_dir }}/gerrit.war init --batch --no-au
 gerrit_install_dir: /opt/gerrit
 gerrit_install_plugins: false  #setting to false for now until plugin install method works...
 gerrit_java_home: /usr/lib/jvm/java-7-openjdk-amd64/jre
+gerrit_slave: false
 gerrit_ldap_info:
   - server: 'ldap://dc01.{{ pri_domain_name }}'
     accountbase: 'DC=example,DC=org'

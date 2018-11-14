@@ -22,6 +22,7 @@
 [container]
 	user = {{ gerrit_account_info.name }}
 	javaHome = {{ gerrit_java_home }}
+	slave = {{ gerrit_slave | default('false') }}
 [sshd]
 	listenAddress = *:{{ gerrit_sshd_listen_port }}
 [httpd]
