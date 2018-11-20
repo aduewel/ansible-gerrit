@@ -40,6 +40,13 @@
     system: yes
     state: present
 
+- name: install_gerrit | adding ssh authorized_keys
+  authorized_key:
+    user: "{{ gerrit_account_info.name }}"
+    state: present
+    key: "{{ item }}"
+  with_items: "{{ gerrit_account_info.authorized_keys }}"
+
 - name: install_gerrit | creating MySQL DB (if used)
   mysql_db:
     name: "{{ item.db }}"

@@ -5,6 +5,7 @@ gerrit_account_info:
   comment: Gerrit User  #defines username comment
   home: '{{ gerrit_site_dir }}'  #defines username home directory
   group: gerrit  #defines usernames groupname
+  authorized_keys: [] #defines authorized_keys for the gerrit user
 gerrit_allow_remote_admin: false  #defines if gerrit should allow remote admin capabilities
 gerrit_auth_type: OPENID  #defines authorization type...OPENID, LDAP, LDAP_BIND...
 gerrit_canonical_web_url: http://{{ ansible_hostname }}.{{ pri_domain_name }}:{{ gerrit_http_listen_port }}/
